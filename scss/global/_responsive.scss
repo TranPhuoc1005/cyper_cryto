@@ -1,0 +1,203 @@
+/*==========================================================================*/
+/*                        M O B I L E    D E V I C E                        */
+/*==========================================================================*/
+
+@media screen and (min-width: 1px) and (max-width: 750px) {
+    :root {
+        --heightHeader: 70px;
+    }
+    #wrapper {
+        min-width: unset !important;
+    }
+
+    .pc {
+        display: none !important;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    #main {
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    .open-nav {
+        .header-menu {
+            top: var(--heightHeader);
+            @include visible;
+        }
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    .to-top {
+        bottom: 100px;
+        right: 15px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    input,
+    button,
+    textarea,
+    select,
+    p,
+    blockquote,
+    th,
+    td,
+    pre,
+    address,
+    li,
+    dt,
+    dd {
+        font-size: 140%;
+    }
+
+    //  ========================== Header ==========================
+    #header {
+        padding: 10px 0;
+        h1 {
+            display: none;
+        }
+        .container {
+            height: 100%;
+        }
+    }
+    .header-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        transition: all 0.3s ease;
+        z-index: 99;
+        background-color: #fff;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: calc(100vh - 70px);
+        padding-bottom: 180px;
+        @include hidden;
+    }
+
+    .menu-list {
+        display: block;
+
+        // level 1
+        > li {
+            > a,
+            > p {
+                border-bottom: 1px solid #ebebeb;
+                font-size: 14px;
+                font-weight: 700;
+                padding: 10px 20px;
+                width: 100%;
+                display: block;
+                position: relative;
+            }
+        }
+    }
+
+    .dropdown {
+        .open {
+            &::before {
+                transform: scale(-1);
+            }
+        }
+
+        p {
+            &::before {
+                content: "";
+                position: absolute;
+                top: calc(50% - 5px);
+                right: 20px;
+                @include arrow(#333, 20px, 10px, bottom);
+                transition: all 0.3s ease;
+            }
+        }
+    }
+
+    .sub-menu {
+        // position: relative;
+        // top: 0;
+        // left: 0;
+        display: none;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ebebeb;
+
+        a {
+            padding: 6px 16px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 16px;
+                left: 0;
+                width: 10px;
+                height: 1px;
+                background-color: var(--body-color);
+            }
+        }
+    }
+    //  ========================== END - Header ==========================
+}
+
+/* END min-width:1px && screen-max:750px */
+
+@media screen and (min-width: 375px) and (max-width: 750px) {
+    .sp320 {
+        display: none;
+    }
+}
+
+/* END min-width:375px && screen-max:750px */
+
+@media screen and (min-width: 425px) and (max-width: 750px) {
+    .sp375 {
+        display: none;
+    }
+}
+
+/* END min-width:425px && screen-max:750px */
+
+@media screen and (min-width: 525px) and (max-width: 750px) {
+    .sp425 {
+        display: none;
+    }
+}
+
+/* END min-width:525px && screen-max:750px */
+
+/*==========================================================================*/
+/*                 F O R   S P E C I F I E D   B R O W S E R                */
+/*==========================================================================*/
+
+/* EDGE  */
+@supports (-ms-ime-align: auto) {
+}
+
+/* FIREFOX */
+@-moz-document url-prefix() {
+}
+
+/* Safari 10.1+ (which is the latest version of Safari at this time) */
+@media not all and (min-resolution: 0.001dpcm) {
+}
+@supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
+}
+/*==========================================================================*/
+/*                             E N D   A L L                                */
+/*==========================================================================*/

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@import "base.css";
+@import "fonts.css";
+
+// Libraries
+@import url(aos.css);
+@import url(slick.css);
+@import url(slick-theme.css);
+@import url(lightbox.css);
+
+// Add Font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*==========================================================================*/
+/*                                                                          */
+/*    base.css  --> スタイルの初期設定を行うため、変更しないで下さい。      */
+/*    fonts.css --> フォントの初期設定を行うため、変更しないで下さい。      */
+/*                                                                          */
+/*==========================================================================*/
+
+/*==========================================================================*/
+/*                           Common-Setting                                 */
+/*==========================================================================*/
+/* 基本タグのフォントサイズを指定（12px -> 120% or 1.2em ） */
+
+// Mixins
+@import './mixins/basic';
+
+@import './global/setting';
+@import './global/utilities';
+/*============================= H_E_A_D_E_R =============================*/
+@import './global/header';
+/*============================= C_O_N_T_E_N_T =============================*/
+@import './global/visual';
+@import './global/content';
+/*============================= F_O_O_T_E_R =============================*/
+@import './global/footer';
+@import './global/browser';

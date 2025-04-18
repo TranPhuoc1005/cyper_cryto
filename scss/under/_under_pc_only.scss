@@ -1,0 +1,25 @@
+/*==========================================================================*/
+/*                     H O V E R    &    P C    O N L Y                     */
+/*==========================================================================*/
+
+@media screen and (min-width: 751px) {
+    .sp320,
+    .sp375,
+    .sp425 {
+        display: none;
+    }
+
+    #topic-path {
+        a:hover {
+            text-decoration: underline;
+            color: $main-cl;
+        }
+    }
+}
+
+/* END screen-min:751px */
+
+@media screen and (min-width: 751px) and (max-width: 1500px) {
+}
+
+/* END screen-min:751px && screen-max:1500px */

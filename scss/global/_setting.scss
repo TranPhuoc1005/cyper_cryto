@@ -1,0 +1,181 @@
+
+
+:root {
+    --content-width: 1230px;
+    --font-yugothic: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+    --font-yumincho: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝B", serif;
+    --font-meiryo: "Meiryo UI", Meiryo, メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
+    --font-arial: Arial, Helvetica, sans-serif;
+    --main-cl: red;
+    --b-cl: #000;
+    --w-cl: #fff;
+    --lh: 1.8em;
+    --font-family: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+    --noto: 'Noto Sans JP', sans-serif;
+    --body-color: #333333;
+    --heightHeader: 100px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea,
+select,
+p,
+blockquote,
+th,
+td,
+pre,
+address,
+li,
+dt,
+dd{
+    font-size: 160%;
+    -webkit-text-size-adjust: none;
+    font-family: var(--font-family);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    width: 100%;
+    border: solid 1px #999999;
+    padding: 16px 20px;
+}
+
+::placeholder {
+    opacity: 0.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.6em;
+}
+
+a {
+    transition: all .3s ease;
+    text-decoration: none;
+    font-family: var(--font-family);
+    color: var(--body-color);
+}
+
+select {
+    visibility: visible !important;
+}
+
+[href^="tel:"] {
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    flex-shrink: 0;
+    height: auto;
+    object-fit: cover;
+}
+
+table {
+    width: 100%;
+}
+
+p {
+    // margin-bottom: 1.85em;
+    margin-bottom: 15px;
+    line-height: 1.8em;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+button {
+    cursor: pointer;
+    border: solid 1px #333;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+/*==========================================================================*/
+/*                              G L O B A L                                 */
+/*==========================================================================*/
+
+html {
+    background: #fff;
+}
+
+body {
+    min-width: 320px;
+    -webkit-text-size-adjust: none;
+    color: var(--body-color);
+}
+
+#wrapper {
+    min-width: 1260px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.container {
+    width: var(--content-width);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.lk-full{
+    @include pos-full;
+}
+
+/*==========================================================================*/
+/*             W O R D P R E S S   U S E R   L O G G E D   I N              */
+/*==========================================================================*/
+
+.customize-support {
+    #header {
+        margin-top: 32px;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .customize-support {
+        #header {
+            margin-top: 46px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .customize-support {
+        #header {
+            margin-top: 0px !important;
+        }
+    }
+}
+
+/*==========================================================================*/
+/*                             E N D   A L L                                */
+/*==========================================================================*/

@@ -1,0 +1,295 @@
+@import './functions';
+
+// Variable
+$main-cl: var(--main-cl);
+$noto: var(--noto);
+
+/*==========================================================================*/
+/*                               M I X I N                                  */
+/*==========================================================================*/
+
+@mixin max-media($width) {
+   @media screen and (max-width: $width) {
+       @content;
+   }
+}
+
+@mixin min-media($width) {
+   @media screen and (min-width: $width) {
+       @content;
+   }
+}
+
+@mixin min-max($min, $max) {
+   @media screen and (min-width: $min) and (max-width: $max) {
+       @content;
+   }
+}
+
+//scroll-base
+@mixin scrollbar-v($width: 0px, $thumb: $main-cl, $track: transparent) {
+   &::-webkit-scrollbar {
+       width: $width;
+   }
+
+   &::-webkit-scrollbar-thumb {
+       background: $thumb;
+       border-radius: 990px;
+   }
+
+   &::-webkit-scrollbar-track {
+       background: $track;
+   }
+}
+
+@mixin scrollbar-h($height: 0px, $thumb: $main-cl, $track: transparent) {
+   &::-webkit-scrollbar {
+       height: $height;
+   }
+
+   &::-webkit-scrollbar-thumb {
+       background: $thumb;
+       border-radius: 990px;
+   }
+
+   &::-webkit-scrollbar-track {
+       background: $track;
+   }
+}
+
+@mixin size($width, $height: $width) {
+   width: $width;
+   height: $height;
+}
+
+@mixin pos-mid() {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+@mixin pos-full() {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+
+@mixin flex-mid() {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+@mixin hidden() {
+   opacity: 0;
+   visibility: hidden;
+}
+
+@mixin visible() {
+   opacity: 1;
+   visibility: visible;
+}
+
+@mixin line-clamp($args) {
+   display: -webkit-box;
+   -webkit-line-clamp: $args;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}
+
+@mixin break-text($width) {
+   white-space: nowrap;
+   word-break: keep-all;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   width: $width;
+}
+
+@mixin lh($lh, $fz) {
+   line-height: ($lh / $fz);
+}
+
+
+@mixin text-verticle($direction: rl) {
+   @if ($direction ==lr) {
+      -webkit-writing-mode: vertical-lr;
+      -moz-writing-mode: vertical-lr;
+      -ms-writing-mode: vertical-lr;
+      writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+   }
+
+   @else {
+      -webkit-writing-mode: vertical-rl;
+      -moz-writing-mode: vertical-rl;
+      -ms-writing-mode: vertical-rl;
+      writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+   }
+
+   -webkit-text-orientation: mixed;
+   -moz-text-orientation: mixed;
+   -ms-text-orientation: mixed;
+   text-orientation: mixed;
+}
+
+@mixin arrow($color: #333, $width, $height: $width, $direction: right) {
+   @if ($direction == left) {
+       border-top: calc($width / 2) solid transparent;
+       border-bottom: calc($width / 2) solid transparent;
+       border-right: $height solid $color;
+   } @else if ($direction == top) {
+       border-left: calc($width / 2) solid transparent;
+       border-right: calc($width / 2) solid transparent;
+       border-bottom: $height solid $color;
+   } @else if ($direction == bottom) {
+       border-left: calc($width / 2) solid transparent;
+       border-right: calc($width / 2) solid transparent;
+       border-top: $height solid $color;
+   } @else {
+       border-top: calc($width / 2) solid transparent;
+       border-bottom: calc($width / 2) solid transparent;
+       border-left: $height solid $color;
+   }
+}
+
+@mixin arrow-line($color: #333, $width: 10, $size: 3px, $direction: right) {
+   @include size(calc($width / 100 * 70.725 * 1px));
+   transform: rotate(45deg);
+
+   @if ($direction == left) {
+       border-bottom: solid $size $color;
+       border-left: solid $size $color;
+   } @else if ($direction == top) {
+       border-top: solid $size $color;
+       border-left: solid $size $color;
+   } @else if ($direction == bottom) {
+       border-bottom: solid $size $color;
+       border-right: solid $size $color;
+   } @else {
+       border-top: solid $size $color;
+       border-right: solid $size $color;
+   }
+}
+
+@mixin arrow-corner($color: #333, $width: 10px, $height: $width, $direction-a: bottom, $direction-b: right) {
+   @include size(0);
+
+   @if ($direction-a == top and $direction-b == left) {
+       border-left: $width solid $color;
+       border-bottom: $height solid transparent;
+   } @else if ($direction-a == top and $direction-b == right) {
+       border-right: $width solid $color;
+       border-bottom: $height solid transparent;
+   } @else if ($direction-a == bottom and $direction-b == left) {
+       border-left: $width solid $color;
+       border-top: $height solid transparent;
+   } @else {
+       border-right: $width solid $color;
+       border-top: $height solid transparent;
+   }
+}
+
+@mixin circle($size: 10px, $color: #333) {
+   @include size($size);
+   background: $color;
+   border-radius: 100%;
+}
+
+@mixin stroke($color, $width: 1px) {
+   $width: $width + 0;
+   $shadow: 0 0 0 transparent;
+   $i: 0;
+   $w: 1;
+
+   @while ($i < $width) {
+      $i: $i + 1;
+      $j: 0;
+      $w: $w + 2;
+
+      @for $r from 1 through $w {
+         @for $c from 1 through $w {
+            $x: $c - ceil($w / 2);
+            $y: $r - ceil($w / 2);
+
+            $shadow: #{$shadow},
+            #{$x}px #{$y}px 0 $color;
+         }
+      }
+   }
+
+   text-shadow: $shadow;
+}
+
+@mixin select-last-row($column) {
+   $selector: "";
+   @for $i from 1 through $column {
+      @for $j from 1 through $i {
+         $comma: ",";
+         $reverse: ($i + 1) - $j;
+         @if $i == $column and $j == $column {
+            $comma: "";
+         }
+         $selector: $selector + "&:nth-child(" + $column + "n + " + $j + "):nth-last-child(" + $reverse + ")" + $comma;
+      }
+   }
+   #{$selector} {
+      @content;
+   }
+}
+
+@mixin col($col, $mright, $mbottom) {
+   width: calc((100% / $col) - ($mright / $col * ($col - 1)));
+   margin-right: $mright;
+   margin-bottom: $mbottom;
+   &:nth-child(#{$col}n + #{$col}) {
+      margin-right: 0;
+   }
+   @include select-last-row($col) {
+      margin-bottom: 0;
+   }
+}
+
+@mixin forward($property, $minvalue, $maxvalue, $minv, $maxv, $view: vw) {
+   --min-value: #{$minvalue};
+   --max-value: #{$maxvalue};
+   --min-view: #{$minv};
+   --max-view: #{$maxv};
+   --value: max(min(calc((var(--max-value) - var(--min-value)) * ((100#{$view} - var(--min-view) * 1px) / (var(--max-view) - var(--min-view))) + calc(var(--min-value) * 1px)), calc(var(--max-value) * 1px)), calc(var(--min-value) * 1px));
+   #{$property}: var(--value);
+}
+// Ví dụ mẫu, không ghi đơn vị px vào cuối các tham số vì công thức sẽ được tính theo vw
+// @include forward('Thông số muốn làm, ( ví dụ : font-size, width, height...', 'Số mong muốn', 'Số tối đa', 'Màn hình nhỏ nhất đạt được mong muốn', 'Màn hình lớn nhất cho số tối đa');
+
+// $property	Thuộc tính cần áp dụng (ví dụ: font-size, padding, v.v.)
+// $minvalue	Giá trị nhỏ nhất khi màn hình ở $minv
+// $maxvalue	Giá trị lớn nhất khi màn hình ở $maxv
+// $minv	Viewport min (đơn vị pixel)
+// $maxv	Viewport max (đơn vị pixel)
+// $view	Đơn vị tỷ lệ của viewport, mặc định là vw
+
+
+@mixin calcfont($px, $min: 22px, $max: 28px, $base: 1920) {
+   font-size: max(
+      min(
+         calc(#{$px} / #{$base} * 100vw),
+         #{$max}
+      ),
+      #{$min}
+   );
+ }
+
+
+
+@mixin reverse($property, $maxvalue, $minvalue, $maxv, $minv, $view: vw) {
+   --min-value: #{$minvalue};
+   --max-value: #{$maxvalue};
+   --min-view: #{$minv};
+   --max-view: #{$maxv};
+   --value: max(var(--max-value) * 1px, min(calc(var(--max-value) * 1px + (var(--min-value) - var(--max-value)) * ((100#{$view} - var(--max-view) * 1px) / (var(--min-view) - var(--max-view)))), var(--min-value) * 1px));
+   #{$property}: var(--value);
+}

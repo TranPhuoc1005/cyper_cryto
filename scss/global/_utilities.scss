@@ -1,0 +1,237 @@
+/*==========================================================================*/
+/*                           U T I L I T I E S                              */
+/*==========================================================================*/
+
+.hamburger-btn {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+    margin-left: 20px;
+    background-color: black;
+
+    .bar {
+        width: 30px;
+        height: 3px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $main-cl;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+
+        &::before,
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            border-radius: 2px;
+            background-color: $main-cl;
+            transition: all 0.3s ease;
+        }
+
+        &::before {
+            top: -8px;
+        }
+
+        &::after {
+            top: 8px;
+        }
+    }
+
+    &.--active {
+        .bar {
+            background-color: transparent;
+
+            &::before {
+                top: 0;
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                top: 0;
+                transform: rotate(135deg);
+            }
+        }
+    }
+}
+
+.to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 98;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    @include hidden();
+
+    &.show {
+        @include visible();
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+    a {
+        position: relative;
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: $main-cl;
+        border: 1px $main-cl solid;
+        border-radius: 4px;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            @include pos-mid;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 14px 20px 14px;
+            border-color: transparent transparent #fff transparent;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-center-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.iline {
+    --cl: var(--main-cl);
+    --t: 75%;
+    --b: 100%;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) var(--t),
+        var(--cl) var(--t),
+        var(--cl) var(--b),
+        rgba(255, 255, 255, 0) var(--b)
+    );
+}
+
+.iline-radius {
+    --underline-color: var(--main-cl);
+    --underline-height: 10px;
+    background: radial-gradient(
+            farthest-side, 
+            var(--underline-color) 98%,
+            transparent 100%) bottom right/var(--underline-height) var(--underline-height), 
+            radial-gradient(farthest-side, var(--underline-color) 98%,
+            transparent 100%) bottom left /var(--underline-height) var(--underline-height), 
+            linear-gradient(var(--underline-color),
+            var(--underline-color)
+        ) bottom/calc(100% - var(--underline-height)) var(--underline-height);
+    background-repeat: no-repeat;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+// Margin Bottom
+@for $i from 0 through 50 {
+    @if ($i % 5) == 0 {
+        .mb#{$i} {
+            margin-bottom: calc($i * 1px) !important;
+        }
+    }
+}
+
+// Margin Top
+@for $i from 0 through 50 {
+    @if ($i % 5) == 0 {
+        .mt#{$i} {
+            margin-top: calc($i * 1px) !important;
+        }
+    }
+}
+
+// Margin Left
+@for $i from 0 through 50 {
+    @if ($i % 5)==0 {
+        .ml-#{$i} {
+            margin-left: calc($i * 1px) !important;
+        }
+    }
+}
+
+// Margin Right
+@for $i from 0 through 50 {
+    @if ($i % 5)==0 {
+        .mr-#{$i} {
+            margin-right: calc($i * 1px) !important;
+        }
+    }
+}
+
+// Margin Left & Right
+@for $i from 0 through 50 {
+    @if ($i % 5)==0 {
+        .mx-#{$i} {
+            margin-left: calc($i * 1px) !important;
+            margin-right: calc($i * 1px) !important;
+        }
+    }
+}
+
+// Margin Top & Bottom
+@for $i from 0 through 50 {
+    @if ($i % 5)==0 {
+        .my-#{$i} {
+            margin-top: calc($i * 1px) !important;
+            margin-bottom: calc($i * 1px) !important;
+        }
+    }
+}
+
+// Width
+@for $i from 0 through 50 {
+    @if ($i % 5) == 0 {
+        .w#{$i} {
+            width: calc($i * 1%);
+        }
+    }
+}
